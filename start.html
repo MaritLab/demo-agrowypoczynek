@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AgroWypoczynek – Strona Główna</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      font-family: 'Poppins', sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <!-- Nawigacja -->
+  <nav x-data="{ open: false }" class="fixed top-0 left-0 w-full h-20 bg-[#4B6B45] text-white z-50">
+    <div class="max-w-6xl mx-auto px-4 h-full flex justify-between items-center">
+      <a href="start.html" class="text-2xl font-semibold">
+        <span class="text-lime-300">Agro</span><span class="text-white">Wypoczynek</span>
+      </a>
+      <div class="space-x-6 text-sm md:text-base hidden md:flex">
+        <a href="o-nas.html" class="hover:text-lime-300">O nas</a>
+        <a href="galeria.html" class="hover:text-lime-300">Galeria</a>
+        <a href="atrakcje.html" class="hover:text-lime-300">Atrakcje</a>
+        <a href="rezerwacja.html" class="hover:text-lime-300">Rezerwacja</a>
+        <a href="kontakt.html" class="hover:text-lime-300">Kontakt</a>
+      </div>
+      <button @click="open = !open" class="md:hidden text-white focus:outline-none z-50">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path x-show="!open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          <path x-show="open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+      <div 
+        x-show="open"
+        x-transition:enter="transition duration-300 ease-out"
+        x-transition:enter-start="-translate-x-full"
+        x-transition:enter-end="translate-x-0"
+        x-transition:leave="transition duration-200 ease-in"
+        x-transition:leave-start="translate-x-0"
+        x-transition:leave-end="-translate-x-full"
+        class="fixed top-0 left-0 w-64 h-full bg-[#4B6B45] text-white shadow-lg p-6 flex flex-col space-y-4 z-40 md:hidden"
+        style="display: none;"
+        @click.away="open = false"
+      >
+        <a href="o-nas.html" class="hover:text-lime-300">O nas</a>
+        <a href="galeria.html" class="hover:text-lime-300">Galeria</a>
+        <a href="atrakcje.html" class="hover:text-lime-300">Atrakcje</a>
+        <a href="rezerwacja.html" class="hover:text-lime-300">Rezerwacja</a>
+        <a href="kontakt.html" class="hover:text-lime-300">Kontakt</a>
+      </div>
+      <div 
+        x-show="open" 
+        x-transition.opacity 
+        class="fixed inset-0 bg-black bg-opacity-50 z-30 md:hidden"
+        @click="open = false"
+      ></div>
+    </div>
+  </nav>
+
+  <main class="pt-0 overflow-hidden">
+    <section class="min-h-[80vh] flex flex-col justify-center items-center text-center px-6 bg-cover bg-center relative fade-in" style="background-image: url('agro.jpg');">
+      <div class="bg-black bg-opacity-40 p-6 rounded-xl">
+        <h1 class="text-4xl md:text-6xl font-bold text-white mb-4 leading-tight drop-shadow-lg">
+          Wypocznij wśród natury<br><span class="text-lime-300">AgroWypoczynek</span>
+        </h1>
+        <p class="text-lg md:text-xl text-gray-200 mb-6 max-w-2xl">
+          Komfort, świeże powietrze, lokalne smaki – idealne miejsce na weekendowy relaks i więcej.
+        </p>
+        <a href="rezerwacja.html" class="bg-lime-400 hover:bg-lime-500 text-gray-900 px-6 py-3 rounded-full font-semibold transition">
+          Zarezerwuj pobyt
+        </a>
+      </div>
+    </section>
+
+    <section class="bg-white py-20 px-6 fade-in">
+      <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+        <img src="gospodarstwo.jpg" alt="Gospodarstwo AgroWypoczynek" class="rounded-2xl shadow-lg w-full max-h-[400px] object-cover" />
+        <div>
+          <h2 class="text-3xl font-bold text-lime-700 mb-4">Kim jesteśmy?</h2>
+          <p class="text-gray-700 mb-6">Od pokoleń tworzymy miejsce, w którym tradycja łączy się z komfortem. Poznaj naszą historię, wartości i codzienność.</p>
+          <a href="o-nas.html" class="text-lime-600 hover:underline font-semibold">Dowiedz się więcej →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-[#EDF6ED] py-20 px-6 fade-in">
+      <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="text-3xl font-bold text-lime-700 mb-4">Nie tylko leniuchowanie</h2>
+          <p class="text-gray-700 mb-6">Czekają na Ciebie konie, rowery, spływy kajakowe, ogniska i wiele więcej. Tu nuda nie ma wstępu – dla dzieci, dorosłych i wszystkich pomiędzy.</p>
+          <a href="atrakcje.html" class="text-lime-600 hover:underline font-semibold">Zobacz wszystkie atrakcje →</a>
+        </div>
+        <img src="atrakcje.jpg" alt="Aktywności na świeżym powietrzu" class="rounded-2xl shadow-lg w-full max-h-[400px] object-cover" />
+      </div>
+    </section>
+
+    <section class="bg-white py-20 px-6 fade-in">
+      <div class="max-w-6xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-lime-700 mb-6">Zobacz, jak u nas jest naprawdę</h2>
+        <p class="text-gray-700 mb-6 max-w-2xl mx-auto">Obraz mówi więcej niż tysiąc słów. Sprawdź naszą galerię i poczuj ten klimat jeszcze przed przyjazdem.</p>
+        <a href="galeria.html" class="bg-lime-400 hover:bg-lime-500 text-gray-900 px-6 py-3 rounded-full font-semibold transition">Przeglądaj zdjęcia</a>
+      </div>
+    </section>
+
+    <section class="bg-lime-50 py-20 px-6 fade-in">
+      <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+        <img src="domki.jpg" alt="Domki do wynajęcia" class="rounded-2xl shadow-lg w-full max-h-[400px] object-cover" />
+        <div>
+          <h2 class="text-3xl font-bold text-lime-700 mb-4">Gotowy na wypoczynek?</h2>
+          <p class="text-gray-700 mb-6">Sprawdź dostępność, wybierz dogodny termin i zarezerwuj swój pobyt w kilku prostych krokach.</p>
+          <a href="rezerwacja.html" class="bg-lime-500 hover:bg-lime-600 text-white px-6 py-3 rounded-full font-semibold transition">Przejdź do rezerwacji</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-[#EDF6ED] py-20 px-6 fade-in">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-lime-700 mb-6">Masz pytania?</h2>
+        <p class="text-gray-700 mb-6">Chcesz zapytać o pobyt, dostępność, albo masz inne wątpliwości? Skontaktuj się z nami – jesteśmy tu dla Ciebie.</p>
+        <a href="kontakt.html" class="bg-white hover:bg-gray-100 text-lime-700 px-6 py-3 rounded-full font-semibold transition border border-lime-500">Skontaktuj się</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-[#4B6B45] text-gray-200 py-10">
+    <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
+      <div>
+        <h3 class="text-white font-semibold text-lg mb-2">AgroWypoczynek</h3>
+        <p>Twój azyl wśród przyrody. Spokój, komfort i przyjazna atmosfera.</p>
+      </div>
+      <div>
+        <h4 class="text-white font-semibold mb-2">Linki</h4>
+        <ul class="space-y-1">
+          <li><a href="o-nas.html" class="hover:text-white">O nas</a></li>
+          <li><a href="atrakcje.html" class="hover:text-white">Atrakcje</a></li>
+          <li><a href="galeria.html" class="hover:text-white">Galeria</a></li>
+          <li><a href="kontakt.html" class="hover:text-white">Kontakt</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-semibold mb-2">Kontakt</h4>
+        <p>Email: <a href="mailto:kontakt@agrowypoczynek.pl" class="text-lime-300 hover:underline">kontakt@maritlab.pl</a></p>
+        <p>Tel: +48 888 264 446</p>
+      </div>
+    </div>
+    <div class="text-center text-xs mt-8">© 2025 AgroWypoczynek. Wszelkie prawa zastrzeżone.</div>
+  </footer>
+
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.utils.toArray('.fade-in').forEach((el) => {
+      gsap.from(el, {
+        opacity: 0,
+        y: 50,
+        duration: 1,
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 90%',
+          toggleActions: 'play none none none'
+        }
+      });
+    });
+  </script>
+</body>
+</html>

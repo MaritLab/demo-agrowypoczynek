@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Atrakcje – AgroWypoczynek</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      font-family: 'Poppins', sans-serif;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nawigacja -->
+  <nav x-data="{ open: false }" class="fixed top-0 left-0 w-full h-20 bg-[#4B6B45] text-white z-50">
+    <div class="max-w-6xl mx-auto px-4 h-full flex justify-between items-center">
+      <a href="start.html" class="text-2xl font-semibold">
+        <span class="text-lime-300">Agro</span><span class="text-white">Wypoczynek</span>
+      </a>
+      <div class="space-x-6 text-sm md:text-base hidden md:flex">
+        <a href="o-nas.html" class="hover:text-lime-300">O nas</a>
+        <a href="galeria.html" class="hover:text-lime-300">Galeria</a>
+        <a href="atrakcje.html" class="hover:text-lime-300">Atrakcje</a>
+        <a href="rezerwacja.html" class="hover:text-lime-300">Rezerwacja</a>
+        <a href="kontakt.html" class="hover:text-lime-300">Kontakt</a>      </div>
+      <button @click="open = !open" class="md:hidden text-white focus:outline-none z-50">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path x-show="!open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          <path x-show="open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+      <div x-show="open" class="fixed top-0 left-0 w-64 h-full bg-[#4B6B45] text-white shadow-lg p-6 flex flex-col space-y-4 z-40 md:hidden" style="display: none;" @click.away="open = false">
+        <a href="o-nas.html" class="hover:text-lime-300">O nas</a>
+        <a href="galeria.html" class="hover:text-lime-300">Galeria</a>
+        <a href="atrakcje.html" class="text-lime-300">Atrakcje</a>
+        <a href="rezerwacja.html" class="hover:text-lime-300">Rezerwacja</a>
+        <a href="kontakt.html" class="hover:text-lime-300">Kontakt</a>
+      </div>
+      <div x-show="open" x-transition.opacity class="fixed inset-0 bg-black bg-opacity-50 z-30 md:hidden" @click="open = false"></div>
+    </div>
+  </nav>
+
+  <!-- Treść -->
+  <main class="pt-28 px-6 text-center">
+    <section class="mb-16" data-anim="fade-in">
+      <h1 class="text-4xl md:text-5xl font-bold text-lime-700 mb-4">Atrakcje</h1>
+      <p class="text-lg text-gray-700">U nas nie ma miejsca na nudę – odkryj wszystkie możliwości aktywnego wypoczynku!</p>
+    </section>
+
+    <section class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 pb-24 text-left" data-anim="fade-in">
+      <div class="p-6 rounded-xl shadow-lg bg-white" data-anim="fade-up">
+        <i class="fas fa-horse text-lime-600 text-4xl mb-4"></i>
+        <h3 class="text-xl font-semibold mb-2">Jazda konna</h3>
+        <p class="text-gray-600">Nauka, przejażdżki, kontakt ze zwierzętami – wszystko pod okiem instruktora.</p>
+      </div>
+      <div class="p-6 rounded-xl shadow-lg bg-white" data-anim="fade-up">
+        <i class="fas fa-fire text-lime-600 text-4xl mb-4"></i>
+        <h3 class="text-xl font-semibold mb-2">Ogniska i grill</h3>
+        <p class="text-gray-600">Wieczory przy ogniu, gitara, kiełbaska, a nad głową tylko gwiazdy.</p>
+      </div>
+      <div class="p-6 rounded-xl shadow-lg bg-white" data-anim="fade-up">
+        <i class="fas fa-water text-lime-600 text-4xl mb-4"></i>
+        <h3 class="text-xl font-semibold mb-2">Spływy kajakowe</h3>
+        <p class="text-gray-600">Malownicze trasy wodne wśród lasów – idealne na rodzinne wypady.</p>
+      </div>
+      <div class="p-6 rounded-xl shadow-lg bg-white" data-anim="fade-up">
+        <i class="fas fa-bicycle text-lime-600 text-4xl mb-4"></i>
+        <h3 class="text-xl font-semibold mb-2">Trasy rowerowe</h3>
+        <p class="text-gray-600">Dla dużych i małych – rowery na miejscu, widoki gratis.</p>
+      </div>
+      <div class="p-6 rounded-xl shadow-lg bg-white" data-anim="fade-up">
+        <i class="fas fa-seedling text-lime-600 text-4xl mb-4"></i>
+        <h3 class="text-xl font-semibold mb-2">Zabawa w ogrodnika</h3>
+        <p class="text-gray-600">Zbieranie warzyw, sianie, podlewanie – dzieciaki to uwielbiają!</p>
+      </div>
+      <div class="p-6 rounded-xl shadow-lg bg-white" data-anim="fade-up">
+        <i class="fas fa-dog text-lime-600 text-4xl mb-4"></i>
+        <h3 class="text-xl font-semibold mb-2">Kontakt ze zwierzętami</h3>
+        <p class="text-gray-600">Kozy, króliki, kury – dzieciaki w raju, a dorośli z telefonami w ręku.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Stopka -->
+  <footer class="bg-[#4B6B45] text-gray-200 py-10">
+    <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
+      <div>
+        <h3 class="text-white font-semibold text-lg mb-2">AgroWypoczynek</h3>
+        <p>Twój azyl wśród przyrody. Spokój, komfort i przyjazna atmosfera.</p>
+      </div>
+      <div>
+        <h4 class="text-white font-semibold mb-2">Linki</h4>
+        <ul class="space-y-1">
+          <li><a href="o-nas.html" class="hover:text-white">O nas</a></li>
+          <li><a href="atrakcje.html" class="text-lime-300">Atrakcje</a></li>
+          <li><a href="galeria.html" class="hover:text-white">Galeria</a></li>
+          <li><a href="kontakt.html" class="hover:text-white">Kontakt</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-semibold mb-2">Kontakt</h4>
+        <p>Email: <a href="mailto:kontakt@agrowypoczynek.pl" class="text-lime-300 hover:underline">kontakt@maritlab.pl</a></p>
+        <p>Tel: +48 888 264 446</p>
+      </div>
+    </div>
+    <div class="text-center text-xs mt-8">© 2025 MaritLab. Wszelkie prawa zastrzeżone.</div>
+  </footer>
+
+  <!-- Animacje -->
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+    document.querySelectorAll("[data-anim]").forEach((el) => {
+      const anim = el.dataset.anim;
+      const config = {
+        opacity: 0,
+        duration: 1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: el,
+          start: "top 85%",
+          toggleActions: "play none none none"
+        }
+      };
+      if (anim === "fade-in") config.y = 50;
+      else if (anim === "fade-left") config.x = -100;
+      else if (anim === "fade-right") config.x = 100;
+      else if (anim === "zoom-in") config.scale = 0.8;
+      else if (anim === "fade-up") config.y = 80;
+
+      gsap.from(el, config);
+    });
+  </script>
+</body>
+</html>
